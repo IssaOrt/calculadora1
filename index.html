@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora IPv4</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header> 
+      <h1>Calculadora IPv4</h1>
+      <p>Calcula la información completa de tu dirección IPv4.</p>
+  </header>
+
+  <main>
+    <form method="POST" class="formulario">
+      <div class="campo">
+        <label>Dirección IP:</label>
+        <input type="text" name="ip" placeholder="Ej: 192.168.1.10" 
+               value="{{ request.form.get('ip', '') }}" required>
+      </div>
+
+      <div class="campo">
+        <label>Máscara de subred:</label>
+        <input type="text" name="mask" placeholder="Ej: 255.255.255.0" 
+               value="{{ request.form.get('mask', '') }}" required>
+      </div>
+
+      <button type="submit">Calcular</button>
+    </form>
+
+    {% if data %}
+      <section class="resultado">
+        {% if data.error %}
+          <div class="error">{{ data.error }}</div>
+        {% else %}
+          <h2>Resultados</h2>
+          <table>
+            <tr><th>Dirección IP ingresada</th><td>{{ request.form.get('ip') }}</td></tr>
+            <tr><th>Máscara ingresada</th><td>{{ request.form.get('mask') }}</td></tr>
+            <tr><th>IP de Red</th><td>{{ data.ip_red }}</td></tr>
+            <tr><th>IP de Broadcast</th><td>{{ data.broadcast }}</td></tr>
+            <tr><th>Hosts útiles</th><td>{{ data.hosts }}</td></tr>
+            <tr><th>Rango de IP útiles</th><td>{{ data.rango }}</td></tr>
+            <tr><th>Clase</th><td>{{ data.clase }}</td></tr>
+            <tr><th>Tipo</th><td>{{ data.tipo }}</td></tr>
+          </table>
+
+          <div class="binario">
+            <h3>Porción en binario</h3>
+            <div class="codigo">{{ data.binario|safe }}</div>
+            <div class="leyenda">
+              <span class="rojo">■ Red</span>
+              <span class="verde">■ Host</span>
+            </div>
+          </div>
+        {% endif %}
+      </section>
+    {% endif %}
+  </main>
+
+  <footer>
+    <p>Desarrollado por <strong>Kiara Ortiz Beltrán</strong></p>
+  </footer>
+</body>
+</html>

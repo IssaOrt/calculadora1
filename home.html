@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Kiara Ortiz - Skills</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <h1>Bienvenido a mi página</h1>
+    <p>Soy Kiara Ortiz Beltrán. Aquí puedes conocer mis habilidades y acceder a mi calculadora IPv4.</p>
+  </header>
+
+  <main>
+  <section class="formulario" style="text-align:center;">
+    <h2>Acerca de mí</h2>
+    <p>Soy Kiara Ortiz Beltrán, estudiante de Ingeniería de Sistemas en sexto semestre. Actualmente estoy cursando la materia de Redes y estoy aprendiendo sobre administración de redes y dirección IP.</p>
+    
+    <h2>Habilidades</h2>
+    <ul style="list-style:none; padding:0; font-weight:600; color:#ad1457; font-size:1.1rem;">
+      <li>Desarrollo Web (Python, Flask, HTML/CSS)</li>
+      <li>Conocimientos en Redes y Seguridad</li>
+      <li>Análisis de Datos </li>
+      <li>Simulación y Modelado de Procesos</li>
+      <li>Algoritmos y Estructuras de Datos</li>
+    </ul>
+    <br>
+    <a href="{{ url_for('calculadora') }}">
+      <button>Ir a la Calculadora IPv4</button>
+    </a>
+  </section>
+</main>
+  <footer>
+    <p>Desarrollado por <strong>Kiara Ortiz Beltrán</strong></p>
+  </footer>
+</body>
+</html>
